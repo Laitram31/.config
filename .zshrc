@@ -15,6 +15,7 @@ alias shutr="sudo openrc-shutdown -r now"
 alias ins="sudo pacman -S"
 alias uins="sudo pacman -R"
 alias c="clear; quand"
+alias poule="git pull"
 
 autoload -U compinit
 zstyle ':completion:*' menu select
