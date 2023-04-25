@@ -1,0 +1,9 @@
+## uninteresting configs
+pulse/
+var/
+# PreMid config files (I will remove them anyways)
+PreMid/
+dconf/
+autostart/
+
+## 
