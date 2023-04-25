@@ -1,9 +1,10 @@
 ## uninteresting configs
 pulse/
 var/
-# PreMid config files (I will remove them anyways)
-PreMid/
-dconf/
-autostart/
+JetBrains/
+discord/
+github-copilot/
+gtk-3.0/
+procps
 
 ## 
