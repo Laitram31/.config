@@ -12,10 +12,13 @@ PS1="%B%(?.0.%F{red}%?) %F{blue}%n %F{green}%~ %f$%b "
 alias ls="ls -a --color=auto"
 alias shut="sudo openrc-shutdown -p now"
 alias shutr="sudo openrc-shutdown -r now"
-alias ins="sudo pacman -S"
+alias ins="sudo pacman -Syu"
 alias uins="sudo pacman -Rns"
 alias c="clear; quand"
 alias poule="git pull"
+alias bri5="xrandr --output eDP-1 --brightness 0.5"
+alias bri6="xrandr --output eDP-1 --brightness 0.6"
+alias ascii="ascii -d"
 
 autoload -U compinit
 zstyle ':completion:*' menu select

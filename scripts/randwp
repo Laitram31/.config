@@ -1,0 +1,20 @@
+#!/bin/sh
+# set a random wallpaper
+# to ignore a folder or a file put it in IGNORE like "file1|folder|file2"
+
+WPDIR="${1:-/home/marcellus/.config/wallpapers}"
+ALL="$(find "$WPDIR" -type f ! -path '*/.git*' ! -name 'README.md')"
+
+searchwp() {
+	wp="$(printf '%s' "$ALL" | shuf -n 1)"
+}
+
+# 1 screen with hsetroot
+#searchwp
+#hsetroot -cover "$wp" 1>/dev/null
+
+# multiple screens with xwallpaper
+for output in $(xrandr | awk '$2=="connected" {print $1 "\n"}'); do
+	searchwp
+	xwallpaper --output "$output" --zoom "$wp"
+done

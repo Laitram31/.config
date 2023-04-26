@@ -1,2 +1,2 @@
-export PATH="$HOME/:$PATH"
+export PATH="$HOME/.config/scripts:$PATH"
 TERMINAL="st"
