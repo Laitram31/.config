@@ -13,7 +13,7 @@ alias ls="ls -a --color=auto"
 alias shut="sudo openrc-shutdown -p now"
 alias shutr="sudo openrc-shutdown -r now"
 alias ins="sudo pacman -S"
-alias uins="sudo pacman -R"
+alias uins="sudo pacman -Rns"
 alias c="clear; quand"
 alias poule="git pull"
 
