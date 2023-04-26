@@ -1,6 +1,6 @@
 # Created by newuser for 5.9
 curl -s https://zeus.ionis-it.com/api/group/428/ics/EOVYjD9jk5 >/tmp/calendar.ics
-$HOME/icstocal /tmp/calendar.ics /tmp/calendar >/dev/null
+icstocal /tmp/calendar.ics /tmp/calendar >/dev/null
 flashfetch
 quand
 
