@@ -19,6 +19,9 @@ alias poule="git pull"
 alias bri5="xrandr --output eDP-1 --brightness 0.5"
 alias bri6="xrandr --output eDP-1 --brightness 0.6"
 alias ascii="ascii -d"
+alias cf="$HOME/.config/"
+alias cspt="$HOME/.config/scripts"
+alias cz="$HOME/.config/zsh"
 
 autoload -U compinit
 zstyle ':completion:*' menu select
