@@ -3,8 +3,8 @@
 # dependencies: music, mpv, socat, yt-dlp, ffmpeg, imagemagick
 # optional dependencies: dwmblocks, libnotify, herbe
 
-FAVDIR="${XDG_MUSIC_DIR:-$HOME/Music}/favorite"
-DLDIR="${XDG_MUSIC_DIR:-$HOME/Music}/download"
+FAVDIR="${XDG_MUSIC_DIR:-$HOME/music}/favorite"
+DLDIR="${XDG_MUSIC_DIR:-$HOME/music}/download"
 CACHE="${XDG_CACHE_HOME:-$HOME/.cache}"
 IMG="nsxiv"
 

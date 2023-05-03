@@ -8,10 +8,14 @@ gtk-3.0/
 procps/
 dconf/
 Tracktion/
+qBittorrent/
+vlc/
+MuseScore/
 
 ## trashfiles
 .zcompdump
 *~
+QtProject.conf
 
 ## other stuff
 scummvm/
