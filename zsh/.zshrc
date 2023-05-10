@@ -22,6 +22,7 @@ alias ascii="ascii -d"
 alias cf="$HOME/.config/"
 alias cspt="$HOME/.config/scripts"
 alias cz="$HOME/.config/zsh"
+alias gs="git status"
 
 autoload -U compinit
 zstyle ':completion:*' menu select
