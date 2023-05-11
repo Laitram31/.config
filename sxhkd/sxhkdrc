@@ -33,5 +33,7 @@ super + u
     dmenuhandler "$(xclip -o)"
 {super + shift + u,button2}
     plumber --sel
+super + t
+	dmenutimer
 button9
     xdo kill
