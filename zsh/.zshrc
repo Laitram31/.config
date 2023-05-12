@@ -25,6 +25,7 @@ alias cz="$HOME/.config/zsh"
 alias gs="git status"
 alias rps="echo help | nc ratakor.com 9998"
 alias nv="nvim"
+alias cdmnt="sudo mount -t iso9660 -o ro /dev/sr0 $HOME/cdrom"
 
 autoload -U compinit
 zstyle ':completion:*' menu select
