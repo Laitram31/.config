@@ -5,13 +5,19 @@ JetBrains/
 discord/
 github-copilot/
 gtk-3.0/
+gtk-2.0/
 procps/
 dconf/
 Tracktion/
+qBittorrent/
+vlc/
+MuseScore/
 
 ## trashfiles
 .zcompdump
 *~
+QtProject.conf
 
 ## other stuff
 scummvm/
+paliasrc

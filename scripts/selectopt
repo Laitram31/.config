@@ -1,0 +1,5 @@
+# !/bin/sh
+# a script to select whether music or musiccmd should be called,
+# depending on whether mpv is already running or not
+
+pidof mpv >/dev/null && musiccmd || music

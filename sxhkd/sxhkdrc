@@ -15,10 +15,14 @@ XF86AudioLowerVolume
        pamixer -d 5; kill -44 $(pidof dwmblocks)
 XF86AudioMute
 	pamixer -t; kill
-{F7,super + n,super + shift + n}
-    $TERMINAL -e {dmenurecord,lfub "$XDG_DATA_HOME/notes",newsboat}
-super + {m, shift + m}
-    {music,musiccmd}
+{super + n,super + shift + n}
+    $TERMINAL -e {lfub "$XDG_DATA_HOME/notes",newsboat}
+super + m
+    music
+super + shift + m
+      musiccmd
+XF86Tools
+	selectopt
 XF86Audio{Prev,Next,Play,Stop}
     musiccmd {prev,next,cycle,stop}
 super + {s,a,y,w,e}
@@ -29,5 +33,7 @@ super + u
     dmenuhandler "$(xclip -o)"
 {super + shift + u,button2}
     plumber --sel
+super + t
+	dmenutimer
 button9
     xdo kill

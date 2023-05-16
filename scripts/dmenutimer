@@ -1,0 +1,6 @@
+#!/bin/sh
+# dmenu script for an arttime timer
+
+TIME=$(printf '' | dmenu -i -sb '#4E3524' -p 'New timer: ')
+
+st -c "arttime" -o - -e arttime --nolearn --random all --style 1 -t "Timer" -g $TIME 2>/dev/null | grep goal

@@ -1,5 +1,5 @@
 /*Name       State  Update Signal + 34*/
-music      = false  // 35
+music      = true  // 35
 cputemp    = false  // 36
 fanspeed   = false  // 37
 memory     = true  // 38
@@ -13,6 +13,6 @@ mic        = false  // 45
 news       = false  // 46
 mail       = false  // 47
 weather    = false  // 48
-daypercent = true  // 49
+daypercent = false  // 49
 date       = true  // 50
 time       = true  // 51

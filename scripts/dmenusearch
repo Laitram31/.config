@@ -1,0 +1,100 @@
+#!/bin/sh
+# search web, arch wiki, aur, youtube man pages or emoji with dmenu
+# websearch dependencies : shuf, curl, /tmp needs to be temporary
+# wiki dependency: arch-wiki-docs
+# youtube dependency: ytfzf
+# man dependencies: man-db, zathura
+# emoji dependency: xclip
+
+set -e
+
+web() {
+	NETWORK=clearnet # clearnet, tor or i2p
+	if [ ! -f "/tmp/instances" ]; then
+		curl -s "https://librex.ratakor.com/instances.json" > /tmp/instances.json ||
+			(notify-send "No internet connection"; exit 1)
+
+		strip() {
+			tmp="${1##"              \"$NETWORK\": \""}"
+			printf '%s\n' "${tmp%%"\","}"
+		}
+
+		while IFS= read -r line || [ -n "$line" ]; do
+			case $line in
+			*"$NETWORK"*null,)
+				continue ;;
+			*"$NETWORK"*)
+				strip "$line" >> /tmp/instances ;;
+			esac
+		done < /tmp/instances.json
+	fi
+
+	instance="$(shuf -n 1 /tmp/instances)"
+	query="${instance}search.php?q=${1:-$(printf "" | dmenu -p "Search:" -l 0)}&t=0"
+}
+
+wiki() {
+	WIKIDIR="/usr/share/doc/arch-wiki/html/en"
+
+	strip() {
+		tmp="${1##"$WIKIDIR/"}"
+		printf '\n%s' "${tmp%%".html"}"
+	}
+
+	for file in "$WIKIDIR"/*.html; do
+		[ -f "$file" ] || continue
+		wikidocs="$wikidocs$(strip "$file")"
+	done
+
+	wikidocs="${wikidocs#*
+}" # remove a trailing newline
+
+	query="$WIKIDIR/$(printf '%s\n' "$wikidocs" | sed -e 's/_/ /g' | sort |\
+		dmenu -i -l 10 -p 'Search Wiki: ').html"
+	query="$(printf '%s\n' "$query" | sed 's/ /_/g')" # separate otherwise set -e fails
+}
+
+aur() {
+	AURSITE="https://aur.archlinux.org/packages?O=0&K="
+	query="$AURSITE$(printf "" | dmenu -p "AUR:" -l 0)"
+}
+
+manpdf() {
+	INPUT=${1:-$(/usr/bin/man -k . | dmenu -i -l 20 | awk '{print $1}')}
+	[ -n "$INPUT" ] && /usr/bin/man -Tpdf "$INPUT" | zathura -
+}
+
+emoji() {
+	CHOSEN=$(cut -d ';' -f1 "$XDG_DATA_HOME/emoji" | dmenu -i -l 30 | sed "s/ .*//")
+
+	[ -z "$CHOSEN" ] && return 1
+
+	printf '%s' "$CHOSEN" | xclip -selection clipboard
+	# notify-send "'$CHOSEN' copied to clipboard."
+}
+
+main() {
+	case ${1:-$(printf 'web\naur\nyoutube\nman\nemoji' | dmenu -i)} in
+	web)
+		web "$2" ;;
+	#wiki)
+	#	wiki ;;
+	aur)
+		aur ;;
+	youtube)
+		ytfzf -D
+		return ;;
+	man)
+		manpdf "$2"
+		return ;;
+	emoji)
+		emoji
+		return ;;
+	*)
+		return 1 ;;
+	esac
+
+	"$BROWSER" "$query" 2> /dev/null
+}
+
+main "$@"

@@ -5,6 +5,7 @@ flashfetch
 quand
 
 
+[ -f "$ZDOTDIR/paliasrc" ] && source "$ZDOTDIR/paliasrc" # Private aliases
 autoload -U colors && colors # Load colors
 PS1="%B%(?.0.%F{red}%?) %F{blue}%n %F{green}%~ %f$%b "
 
@@ -19,6 +20,14 @@ alias poule="git pull"
 alias bri5="xrandr --output eDP-1 --brightness 0.5"
 alias bri6="xrandr --output eDP-1 --brightness 0.6"
 alias ascii="ascii -d"
+alias cf="$HOME/.config/"
+alias cspt="$HOME/.config/scripts"
+alias cz="$HOME/.config/zsh"
+alias cn="$XDG_CONFIG_HOME/nvim"
+alias gs="git status"
+alias rps="echo help | nc ratakor.com 9998"
+alias nv="nvim"
+alias cdmnt="sudo mount -t iso9660 -o ro /dev/sr0 $HOME/cdrom"
 
 autoload -U compinit
 zstyle ':completion:*' menu select
