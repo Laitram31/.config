@@ -15,6 +15,8 @@ XF86AudioLowerVolume
        pamixer -d 5; kill -44 $(pidof dwmblocks)
 XF86AudioMute
 	pamixer -t; kill
+XF86Mail
+	betterbird
 {super + n,super + shift + n}
     $TERMINAL -e {lfub "$XDG_DATA_HOME/notes",newsboat}
 super + m
@@ -29,6 +31,8 @@ super + {s,a,y,w,e}
     dmenusearch {web,aur,youtube,man,emoji}
 super + shift + w
     dmenuoff
+super + shift + r
+	randwp
 super + u
     dmenuhandler "$(xclip -o)"
 {super + shift + u,button2}
