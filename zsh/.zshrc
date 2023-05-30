@@ -29,6 +29,7 @@ alias rps="echo help | nc ratakor.com 9998"
 alias nv="nvim"
 alias cdmnt="sudo mount -t iso9660 -o ro /dev/sr0 $HOME/cdrom"
 alias py="python3"
+alias wtr="curl wttr.in"
 
 autoload -U compinit
 zstyle ':completion:*' menu select

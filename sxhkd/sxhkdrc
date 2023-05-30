@@ -25,8 +25,10 @@ super + shift + m
       musiccmd
 XF86Tools
 	selectopt
-XF86Audio{Prev,Next,Play,Stop}
-    musiccmd {prev,next,cycle,stop}
+XF86Audio{Prev,Next,Play}
+    musiccmd {prev,next,cycle}
+XF86AudioStop
+	musiccmd stop; kill $(pidof glava)
 super + {s,a,y,w,e}
     dmenusearch {web,aur,youtube,man,emoji}
 super + shift + w
