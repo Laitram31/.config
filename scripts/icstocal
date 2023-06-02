@@ -41,12 +41,15 @@ while line != "END:VCALENDAR\n":
                 summaries.append(line[8:].strip())
             elif line.startswith("DTSTART"):
                 start = line.lstrip("DTSTART")
+                n = 0
+                while start[n] != ":":
+                    n+=1
                 year = ""
                 month = ""
                 day = ""
                 hour = ""
                 min = ""
-                for i in range(len(start)):
+                for i in range(n + 1, len(start)):
                     if i >= 1 and i <= 4:
                         year += start[i]
                     elif i == 5 or i == 6:
@@ -65,9 +68,11 @@ while line != "END:VCALENDAR\n":
                 starts.append([year, month, day, hour, min])
             elif line.startswith("DTEND"):
                 end = line.lstrip("DTEND")
+                while start[n] != ":":
+                    n+=1
                 hour = ""
                 min = ""
-                for i in range(len(end)):
+                for i in range(n + 1, len(end)):
                     if i == 10:
                         hour += end[i]
                     elif i == 11:

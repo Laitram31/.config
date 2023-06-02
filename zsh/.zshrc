@@ -1,11 +1,11 @@
-# Created by newuser for 5.9
-curl -s https://zeus.ionis-it.com/api/group/428/ics/EOVYjD9jk5 >/tmp/calendar.ics
+[ -f "$ZDOTDIR/paliasrc" ] && source "$ZDOTDIR/paliasrc" # Private aliases
+
+curl -s $CAL_PERSO | grep -v END:VCALENDAR >/tmp/calendar.ics
+curl -s $CAL_SCHOOL | grep -v BEGIN:VCALENDAR >>/tmp/calendar.ics
 icstocal /tmp/calendar.ics /tmp/calendar >/dev/null
 flashfetch
 quand
 
-
-[ -f "$ZDOTDIR/paliasrc" ] && source "$ZDOTDIR/paliasrc" # Private aliases
 autoload -U colors && colors # Load colors
 PS1="%B%(?.0.%F{red}%?) %F{blue}%n %F{green}%~ %f$%b "
 
@@ -29,7 +29,9 @@ alias rps="echo help | nc ratakor.com 9998"
 alias nv="nvim"
 alias cdmnt="sudo mount -t iso9660 -o ro /dev/sr0 $HOME/cdrom"
 alias py="python3"
-alias wtr="curl wttr.in"
+alias wtr="curl wttr.in/Lyon"
+alias doc="$HOME/Documents"
+alias usbmnt="sudo mount /dev/sdb1 $HOME/usb"
 
 autoload -U compinit
 zstyle ':completion:*' menu select
