@@ -23,6 +23,7 @@ alias ascii="ascii -d"
 alias cf="$HOME/.config/"
 alias cspt="$HOME/.config/scripts"
 alias cz="$HOME/.config/zsh"
+alias czr="nv $ZDOTDIR/.zshrc"
 alias cn="$XDG_CONFIG_HOME/nvim"
 alias gs="git status"
 alias rps="echo help | nc ratakor.com 9998"
@@ -48,3 +49,7 @@ setopt prompt_subst
 RPROMPT=\$vcs_info_msg_0_
 zstyle ':vcs_info:git:*' formats '%F{cyan}(%b)%f'
 zstyle ':vcs_info:*' enable git
+
+qc(){
+	cc "$1" && ./a.out
+}

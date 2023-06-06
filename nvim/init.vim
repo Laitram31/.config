@@ -12,7 +12,7 @@ Plug 'Mofiqul/dracula.nvim' " dracula theme
 Plug 'ellisonleao/gruvbox.nvim' " gruvbox theme
 "Plug 'catppuccin/nvim', { 'as': 'catppuccin' } " catppuccin theme
 "Plug 'neanias/everforest-nvim'  " everforest theme
-Plug 'ratakor/vim-startify' " start screen
+Plug 'mhinz/vim-startify' " start screen
 Plug 'nvim-lualine/lualine.nvim' " bottom bar
 Plug 'kyazdani42/nvim-web-devicons' " fancy icons
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " syntax color
@@ -46,6 +46,7 @@ Plug 'ziglang/zig.vim'
 Plug 'kovetskiy/sxhkd-vim'
 Plug 'petertriho/nvim-scrollbar'
 Plug 'andrewferrier/debugprint.nvim'
+Plug 'm4xshen/autoclose.nvim'
 "Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 call plug#end()
 
