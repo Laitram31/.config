@@ -16,7 +16,14 @@ alias shutr="sudo openrc-shutdown -r now"
 alias ins="sudo pacman -Syu"
 alias uins="sudo pacman -Rns"
 alias c="clear; quand"
-alias poule="git pull"
+
+# git
+alias {tirer,tir,poule}="git pull"
+alias {statut,sta}="git status"
+alias {ajouter,aj}="git add"
+alias {atome_de_code,ato}="git commit -m" # voir bitoduc.fr, Commit
+alias {pousser,pous}="git push"
+
 alias bri5="xrandr --output eDP-1 --brightness 0.5"
 alias bri6="xrandr --output eDP-1 --brightness 0.6"
 alias ascii="ascii -d"
@@ -25,7 +32,6 @@ alias cspt="$HOME/.config/scripts"
 alias cz="$HOME/.config/zsh"
 alias czr="nv $ZDOTDIR/.zshrc"
 alias cn="$XDG_CONFIG_HOME/nvim"
-alias gs="git status"
 alias rps="echo help | nc ratakor.com 9998"
 alias nv="nvim"
 alias cdmnt="sudo mount -t iso9660 -o ro /dev/sr0 $HOME/cdrom"
