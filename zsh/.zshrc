@@ -59,3 +59,7 @@ zstyle ':vcs_info:*' enable git
 qc(){
 	cc "$1" && ./a.out
 }
+
+setbrightness() {
+    xrandr --output eDP-1 --brightness $1
+}

@@ -9,12 +9,16 @@ Scroll_Lock
 	themeswap
 Print
 	screenshot
+XF86MonBrightnessUp
+	setbrightness $(printf "%.2f" "$(($(xrandr --verbose | awk '/Brightness/ {print $2;exit}') + 0.1))")
+XF86MonBrightnessDown
+	setbrightness $(printf "%.2f" "$(($(xrandr --verbose | awk '/Brightness/ {print $2;exit}') - 0.1))")
 XF86AudioRaiseVolume
     pamixer -i 5; kill -44 $(pidof dwmblocks)
 XF86AudioLowerVolume
        pamixer -d 5; kill -44 $(pidof dwmblocks)
 XF86AudioMute
-	pamixer -t; kill
+	pamixer -t; kill -44 $(pidof dwmblocks)
 XF86Mail
 	betterbird
 {super + n,super + shift + n}
