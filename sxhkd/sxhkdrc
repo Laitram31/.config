@@ -1,4 +1,5 @@
-# reload with kill -10 $(pidof sxhkd)
+super + Escape
+	kill -10 $(pidof sxhkd)
 {super + Return,button8}
        $TERMINAL
 super + d
@@ -10,9 +11,9 @@ Scroll_Lock
 Print
 	screenshot
 XF86MonBrightnessUp
-	setbrightness $(printf "%.2f" "$(($(xrandr --verbose | awk '/Brightness/ {print $2;exit}') + 0.1))")
+	BRIGHTNESS=$(($BRIGHTNESS+0.1));setbrightness $BRIGHTNESS
 XF86MonBrightnessDown
-	setbrightness $(printf "%.2f" "$(($(xrandr --verbose | awk '/Brightness/ {print $2;exit}') - 0.1))")
+	BRIGHTNESS=$(($BRIGHTNESS-0.1));setbrightness $BRIGHTNESS
 XF86AudioRaiseVolume
     pamixer -i 5; kill -44 $(pidof dwmblocks)
 XF86AudioLowerVolume
