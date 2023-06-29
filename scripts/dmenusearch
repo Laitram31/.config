@@ -70,7 +70,7 @@ emoji() {
 	[ -z "$CHOSEN" ] && return 1
 
 	printf '%s' "$CHOSEN" | xclip -selection clipboard
-	# notify-send "'$CHOSEN' copied to clipboard."
+	herbe "'$CHOSEN' copied to clipboard."
 }
 
 main() {
