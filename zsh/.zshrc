@@ -24,6 +24,7 @@ alias {ajouter,aj}="git add"
 alias {atome_de_code,ato}="git commit -m" # voir bitoduc.fr, Commit
 alias {pousser,pous}="git push"
 alias {difference,ference}="git diff"
+alias {tronc,tr}="git log"
 
 alias bri5="xrandr --output eDP-1 --brightness 0.5"
 alias bri6="xrandr --output eDP-1 --brightness 0.6"

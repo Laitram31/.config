@@ -1,6 +1,6 @@
 /*Name       State  Update Signal + 34*/
 music      = true  // 35
-cputemp    = false  // 36
+cputemp    = true  // 36
 fanspeed   = false  // 37
 memory     = true  // 38
 battery    = true  // 39
