@@ -82,11 +82,6 @@ main() {
 	aur)
 		aur ;;
 	youtube)
-#		vid="$(ytfzf -D -I raw)"
-#		title="$(echo $vid | sed "s/\s*|.*//g")"
-#		url="https$(echo $vid | sed "s/.*|https//")"
-#		echo "\"$url\"" > "$HOME/music/urls/$title"
-#		pidof mpv > /dev/null || music "auto" "$HOME/music/urls"
 		ytfzf -D
 		return ;;
 	man)
