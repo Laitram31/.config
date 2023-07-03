@@ -13,11 +13,13 @@ qBittorrent/
 vlc/
 MuseScore/
 libreoffice/
+itch/
 
 ## trashfiles
 .zcompdump
 *~
 QtProject.conf
+gops/
 
 ## other stuff
 scummvm/

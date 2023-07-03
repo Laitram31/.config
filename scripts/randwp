@@ -2,7 +2,7 @@
 # set a random wallpaper
 # to ignore a folder or a file put it in IGNORE like "file1|folder|file2"
 
-WPDIR="${1:-/home/marcellus/.config/wallpapers}"
+WPDIR="${1:-/home/marcellus/.config/wallpapers/SFW}"
 ALL="$(find "$WPDIR" -type f ! -path '*/.git*' ! -name 'README.md')"
 
 searchwp() {

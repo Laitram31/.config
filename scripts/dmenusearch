@@ -70,7 +70,7 @@ emoji() {
 	[ -z "$CHOSEN" ] && return 1
 
 	printf '%s' "$CHOSEN" | xclip -selection clipboard
-	# notify-send "'$CHOSEN' copied to clipboard."
+	herbe "'$CHOSEN' copied to clipboard."
 }
 
 main() {
@@ -82,6 +82,11 @@ main() {
 	aur)
 		aur ;;
 	youtube)
+#		vid="$(ytfzf -D -I raw)"
+#		title="$(echo $vid | sed "s/\s*|.*//g")"
+#		url="https$(echo $vid | sed "s/.*|https//")"
+#		echo "\"$url\"" > "$HOME/music/urls/$title"
+#		pidof mpv > /dev/null || music "auto" "$HOME/music/urls"
 		ytfzf -D
 		return ;;
 	man)
