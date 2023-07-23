@@ -1,5 +1,7 @@
 super + Escape
 	kill -10 $(pidof sxhkd)
+super + shift + Escape
+	kill -10 $(pidof sb)
 {super + Return,button8}
        $TERMINAL
 super + d
