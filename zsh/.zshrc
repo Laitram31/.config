@@ -1,10 +1,8 @@
 [ -f "$ZDOTDIR/paliasrc" ] && source "$ZDOTDIR/paliasrc" # Private aliases
+[ -f "$ZDOTDIR/epitaliasrc" ] && source "$ZDOTDIR/epitaliasrc" # Private aliases
 
-curl -s $CAL_PERSO | grep -v END:VCALENDAR >/tmp/calendar.ics
-curl -s $CAL_SCHOOL | grep -v BEGIN:VCALENDAR >>/tmp/calendar.ics
-icstocal /tmp/calendar.ics /tmp/calendar >/dev/null
-flashfetch
-quand
+# quand
+cat ~/todo
 
 autoload -U colors && colors # Load colors
 PS1="%B%(?.0.%F{red}%?) %F{blue}%n %F{green}%~ %f$%b "
@@ -13,27 +11,34 @@ PS1="%B%(?.0.%F{red}%?) %F{blue}%n %F{green}%~ %f$%b "
 alias ls="ls -a --color=auto"
 alias shut="sudo openrc-shutdown -p now"
 alias shutr="sudo openrc-shutdown -r now"
+alias upd="sudo pacman -Syuu"
 alias ins="sudo pacman -Syu"
 alias uins="sudo pacman -Rns"
-alias c="clear; quand"
+alias c="clear; cat ~/todo"
 
 # git
+
+alias {clone,cloner}="git clone"
 alias {tirer,tir,poule}="git pull"
 alias {statut,sta}="git status"
 alias {ajouter,aj}="git add"
 alias {atome_de_code,ato}="git commit -m" # voir bitoduc.fr, Commit
 alias {pousser,pous}="git push"
+alias {poussétiquettes,poussE}="git push --follow-tags"
 alias {difference,ference}="git diff"
 alias {tronc,tr}="git log"
 alias {resto,restau}="git restore"
+alias {étiquette,etiqu}="git tag"
 
 alias bri5="xrandr --output eDP-1 --brightness 0.5"
 alias bri6="xrandr --output eDP-1 --brightness 0.6"
 alias ascii="ascii -d"
+alias lf="lfub"
+alias vmk="v Makefile"
 alias cf="$HOME/.config/"
 alias cspt="$HOME/.config/scripts"
 alias cz="$HOME/.config/zsh"
-alias czr="v $ZDOTDIR/.zshrc"
+alias czr="v $ZDOTDIR/.zshrc && source $ZDOTDIR/.zshrc"
 alias cn="$XDG_CONFIG_HOME/nvim"
 alias rps="echo help | nc ratakor.com 9998"
 alias v="nvim"

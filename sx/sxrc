@@ -1,0 +1,10 @@
+setxkbmap fr
+curl -m 3 -s $CAL_PERSO | grep -v END:VCALENDAR >/tmp/calendar.ics
+curl -m 3 -s $CAL_SCHOOL | grep -v BEGIN:VCALENDAR >> /tmp/calendar.ics
+icstocal /tmp/calendar.ics /tmp/calendar >/dev/null
+scron -f $XDG_CONFIG_HOME/crontab
+$HOME/.config/scripts/randwp
+sxhkd&
+picom&
+dwmblocks&
+exec dwm
