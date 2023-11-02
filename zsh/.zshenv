@@ -1,3 +1,6 @@
+[ -f "$ZDOTDIR/paliasrc" ] && source "$ZDOTDIR/paliasrc" # Private aliases
+[ -f "$ZDOTDIR/epitaliasrc" ] && source "$ZDOTDIR/epitaliasrc" # Private aliases
+
 export PATH="$HOME/.config/scripts:$PATH"
 export TERMINAL="st"
 export EDITOR="nvim"
