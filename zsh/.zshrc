@@ -1,39 +1,46 @@
-[ -f "$ZDOTDIR/paliasrc" ] && source "$ZDOTDIR/paliasrc" # Private aliases
-
-curl -s $CAL_PERSO | grep -v END:VCALENDAR >/tmp/calendar.ics
-curl -s $CAL_SCHOOL | grep -v BEGIN:VCALENDAR >>/tmp/calendar.ics
-icstocal /tmp/calendar.ics /tmp/calendar >/dev/null
-flashfetch
-quand
-
 autoload -U colors && colors # Load colors
-PS1="%B%(?.0.%F{red}%?) %F{blue}%n %F{green}%~ %f$%b "
+PS1="%B%F{214}%n %F{209}%~ %f%F{45} %f%b "
+RPS1="%f(%B%(?.%F{green}0%f.%F{red}%?%f)%b%)"
+
+# To do
+cat ~/todo
 
 
 alias ls="ls -a --color=auto"
 alias shut="sudo openrc-shutdown -p now"
 alias shutr="sudo openrc-shutdown -r now"
+alias upd="sudo pacman -Syuu; setxkbmap fr"
 alias ins="sudo pacman -Syu"
 alias uins="sudo pacman -Rns"
-alias c="clear; quand"
+alias c="clear; cat ~/todo"
 
 # git
+
+alias aled="cat $XDG_CONFIG_HOME/zsh/gitHelp"
+alias {clone,cloner}="git clone"
 alias {tirer,tir,poule}="git pull"
 alias {statut,sta}="git status"
 alias {ajouter,aj}="git add"
 alias {atome_de_code,ato}="git commit -m" # voir bitoduc.fr, Commit
 alias {pousser,pous}="git push"
+alias {poussétiquettes,poussE}="git push --follow-tags"
 alias {difference,ference}="git diff"
 alias {tronc,tr}="git log"
 alias {resto,restau}="git restore"
+alias {étiquette,etiqu}="git tag"
+alias branche="git branch"
 
 alias bri5="xrandr --output eDP-1 --brightness 0.5"
 alias bri6="xrandr --output eDP-1 --brightness 0.6"
 alias ascii="ascii -d"
+alias sudo="sudo "
+alias lf="lfub"
+alias vmk="v Makefile"
+alias cmk="xsel -bo > Makefile"
 alias cf="$HOME/.config/"
 alias cspt="$HOME/.config/scripts"
 alias cz="$HOME/.config/zsh"
-alias czr="v $ZDOTDIR/.zshrc"
+alias czr="v $ZDOTDIR/.zshrc && source $ZDOTDIR/.zshrc"
 alias cn="$XDG_CONFIG_HOME/nvim"
 alias rps="echo help | nc ratakor.com 9998"
 alias v="nvim"
@@ -42,6 +49,7 @@ alias py="python3"
 alias wtr="curl wttr.in/Lyon"
 alias doc="$HOME/Documents"
 alias usbmnt="sudo mount /dev/sdb1 $HOME/usb"
+alias sss="ssh root@140.82.10.231"
 
 autoload -U compinit
 zstyle ':completion:*' menu select
@@ -55,7 +63,7 @@ autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
 setopt prompt_subst
-RPROMPT=\$vcs_info_msg_0_
+# RPROMPT=\$vcs_info_msg_0_
 zstyle ':vcs_info:git:*' formats '%F{cyan}(%b)%f'
 zstyle ':vcs_info:*' enable git
 

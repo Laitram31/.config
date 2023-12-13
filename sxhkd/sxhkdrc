@@ -12,6 +12,12 @@ Scroll_Lock
 	themeswap
 Print
 	screenshot
+XF86Explorer
+	st -e lfub ~
+super + g
+	st -e lfub ~/games
+XF86WakeUp
+	nsxiv -f ~/img/wakeup.png
 XF86MonBrightnessUp
 	BRIGHTNESS=$(($BRIGHTNESS+0.1));setbrightness $BRIGHTNESS
 XF86MonBrightnessDown
@@ -24,8 +30,8 @@ XF86AudioMute
 	pamixer -t; kill -44 $(pidof dwmblocks)
 XF86Mail
 	betterbird
-{super + n,super + shift + n}
-    $TERMINAL -e {lfub "$XDG_DATA_HOME/notes",newsboat}
+XF86Calculator
+	$TERMINAL -e calc
 super + m
     music
 super + shift + m

@@ -1,0 +1,15 @@
+# Trouduction de Git
+
+clone / cloner : "git clone"
+tirer / tir / poule : "git pull"
+statut / sta : "git status"
+ajouter / aj : "git add"
+atome_de_code / ato : "git commit -m" # voir bitoduc.fr, Commit
+pousser / pous : "git push"
+poussétiquettes / poussE : "git push --follow-tags"
+difference / ference / "git diff"
+tronc / tr : "git log"
+resto / restau : "git restore"
+étiquette / etiqu : "git tag"
+branche : "git branch"
+

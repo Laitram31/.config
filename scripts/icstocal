@@ -68,7 +68,8 @@ while line != "END:VCALENDAR\n":
                 starts.append([year, month, day, hour, min])
             elif line.startswith("DTEND"):
                 end = line.lstrip("DTEND")
-                while start[n] != ":":
+                n = 0
+                while end[n] != ":":
                     n+=1
                 hour = ""
                 min = ""

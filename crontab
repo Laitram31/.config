@@ -1,0 +1,2 @@
+0,10,20,30,40,50 * * * * kill -52 $(pidof dwmblocks); randwp
+30 * * * * kill -49 $(pidof dwmblocks)
