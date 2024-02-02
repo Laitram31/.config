@@ -7,7 +7,7 @@ super + shift + Escape
 super + d
       dmenu_run -hp "browser,mail,librewolf,discord,anki,steam,monero-wallet-gui"
 {super + shift + x}
-       slock
+      glitchlock 
 Scroll_Lock
 	themeswap
 Print

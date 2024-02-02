@@ -7,7 +7,7 @@ ROOTCMD="${ROOTCMD:-$(command -v doas || command -v sudo)}"
 
 case "$QUERY" in
 "lock")
-	slock ;;
+	glitchlock ;;
 "poweroff")
 	"$ROOTCMD" poweroff ;;
 "reboot")

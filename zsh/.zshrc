@@ -1,5 +1,5 @@
 autoload -U colors && colors # Load colors
-PS1="%B%F{214}%n %F{209}%~ %f%F{45} %f%b "
+PS1="%B%F{214}Martial %F{209}%~ %f%F{45} %f%b "
 RPS1="%f(%B%(?.%F{green}0%f.%F{red}%?%f)%b%)"
 
 # To do
@@ -49,7 +49,10 @@ alias py="python3"
 alias wtr="curl wttr.in/Lyon"
 alias doc="$HOME/Documents"
 alias usbmnt="sudo mount /dev/sdb1 $HOME/usb"
-alias sss="ssh root@140.82.10.231"
+alias sss="ssh root@marcelus.net"
+alias ssg="ssh git@marcelus.net"
+alias mpv="xset -dpms && xset s off && mpv"
+alias doc="~/Documents"
 
 autoload -U compinit
 zstyle ':completion:*' menu select
@@ -70,4 +73,4 @@ zstyle ':vcs_info:*' enable git
 qc(){
 	cc "$1" && ./a.out
 }
-
+eval $(thefuck --alias merde)

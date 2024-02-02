@@ -20,9 +20,14 @@ MuseScore/
 libreoffice/
 itch/
 Meltytech/
+Ankama\ Launcher/
+Vencord/
+zaap/
+glib-2.0/
 
 ## trashfiles
 .zcompdump
+glade.conf
 *~
 QtProject.conf
 gops/
