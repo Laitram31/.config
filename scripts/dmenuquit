@@ -1,0 +1,27 @@
+#!/bin/sh
+#
+#    author:  marcellus 
+#
+#   shellcheck disable=SC2012
+
+if [ "$1" = "--shuffle" ]; then
+	SHUFFLE=yes
+	shift
+fi
+
+OPTION="$(printf "no\\nyes\\nrestart" | dmenu -i -p "Exit Fluorite ")"
+
+case $OPTION in
+    "no")
+	exit 0
+	;;
+    "yes")
+	killall Fluorite
+	;;
+    "restart")
+	killall Fluorite; startx
+	;;
+    *)
+	exit 1
+	;;
+esac

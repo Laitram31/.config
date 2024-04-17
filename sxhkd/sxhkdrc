@@ -1,15 +1,9 @@
 super + Escape
 	kill -10 $(pidof sxhkd)
-super + shift + Escape
-	kill -10 $(pidof dwmblocks)
-{super + Return,button8}
-       $TERMINAL
 super + d
-      dmenu_run -hp "browser,mail,librewolf,discord,anki,steam,monero-wallet-gui"
-{super + shift + x}
-      glitchlock 
-Scroll_Lock
-	themeswap
+      dmenu_run -hp "browser,mail,librewolf,discord,steam"
+super + shift + e
+	dmenuquit
 Print
 	screenshot
 XF86Explorer
@@ -18,16 +12,6 @@ super + g
 	st -e lfub ~/games
 XF86WakeUp
 	nsxiv -f ~/img/wakeup.png
-XF86MonBrightnessUp
-	BRIGHTNESS=$(($BRIGHTNESS+0.1));setbrightness $BRIGHTNESS
-XF86MonBrightnessDown
-	BRIGHTNESS=$(($BRIGHTNESS-0.1));setbrightness $BRIGHTNESS
-XF86AudioRaiseVolume
-    pamixer -i 5; kill -44 $(pidof dwmblocks)
-XF86AudioLowerVolume
-       pamixer -d 5; kill -44 $(pidof dwmblocks)
-XF86AudioMute
-	pamixer -t; kill -44 $(pidof dwmblocks)
 XF86Mail
 	betterbird
 XF86Calculator
@@ -41,7 +25,7 @@ XF86Tools
 XF86Audio{Prev,Next,Play}
     musiccmd {prev,next,cycle}
 XF86AudioStop
-	musiccmd stop; kill $(pidof glava)
+	musiccmd stop
 super + {s,a,y,w,e}
     dmenusearch {web,aur,youtube,man,emoji}
 super + shift + w

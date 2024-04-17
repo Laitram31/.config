@@ -65,13 +65,6 @@ getthumbnail() {
 
 
 main() {
-	if ! pgrep -x music >/dev/null; then
-		kill -35 "$(pidof dwmblocks)"
-		herbe "Error: There is no music playing"\
-			"Do you want to play some ?" &&
-			music
-		return 1
-	fi
 
 	cmd="${1:-$(printf '⏯️pause/play\n⏭️next\n⏮️prev\n📢volume\n🔳stop
 ⭐favorite\n⬇️download\n🖼️thumbnail' | dmenu -i -p "musiccmd")}"
@@ -90,7 +83,7 @@ main() {
 			| socat - /tmp/mpvsocket 1> /dev/null ;;
 	*stop)
 		printf 'stop\n' | socat - /tmp/mpvsocket
-		kill -35 "$(pidof dwmblocks)" ;;
+		pidof dwmblocks && kill -35 "$(pidof dwmblocks)" ;;
 	*favorite|fav)
 		getpath
 		addtofav ;;

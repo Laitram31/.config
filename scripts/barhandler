@@ -1,0 +1,15 @@
+while true; do
+    read input
+    case $input in
+	selectopt)
+	    setsid --fork selectopt
+	    ;;
+	swatch)
+	    SWATCH=$(cat /tmp/swatch)
+	    ([ $SWATCH = "0" ] && echo "1" || echo "0") > /tmp/swatch
+	    ;;
+	*)
+	    echo $input
+	    ;;
+    esac
+done

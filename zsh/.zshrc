@@ -1,12 +1,16 @@
 autoload -U colors && colors # Load colors
-PS1="%B%F{214}Martial %F{209}%~ %f%F{45} %f%b "
+# SPATH=$(pwd | sed 's/\/home\/marcellus/~/' | sed 's/[^\/]*\/[^\/]*\/[^\/]*\/[^\/]*/~\/.../')
+PS1=$(echo "%B%F{214}Martial %F{209}%~ %f%F{45} %f%b " | sed 's/[^\/]*\/[^\/]*\/[^\/]*\/[^\/]*/~\/.../' -E)
 RPS1="%f(%B%(?.%F{green}0%f.%F{red}%?%f)%b%)"
 
-# To do
+# To do - as if I read that
 cat ~/todo
 
+# Developer Quote
+curl -m 3 -s https://api.tabliss.io/v1/developer-excuses | jq .data
 
-alias ls="ls -a --color=auto"
+
+alias ls="ls -AhH --color=auto"
 alias shut="sudo openrc-shutdown -p now"
 alias shutr="sudo openrc-shutdown -r now"
 alias upd="sudo pacman -Syuu; setxkbmap fr"
@@ -25,7 +29,7 @@ alias {atome_de_code,ato}="git commit -m" # voir bitoduc.fr, Commit
 alias {pousser,pous}="git push"
 alias {poussétiquettes,poussE}="git push --follow-tags"
 alias {difference,ference}="git diff"
-alias {tronc,tr}="git log"
+alias tronc="git log"
 alias {resto,restau}="git restore"
 alias {étiquette,etiqu}="git tag"
 alias branche="git branch"
@@ -42,6 +46,7 @@ alias cspt="$HOME/.config/scripts"
 alias cz="$HOME/.config/zsh"
 alias czr="v $ZDOTDIR/.zshrc && source $ZDOTDIR/.zshrc"
 alias cn="$XDG_CONFIG_HOME/nvim"
+alias dl="$HOME/Downloads"
 alias rps="echo help | nc ratakor.com 9998"
 alias v="nvim"
 alias cdmnt="sudo mount -t iso9660 -o ro /dev/sr0 $HOME/cdrom"
@@ -49,8 +54,8 @@ alias py="python3"
 alias wtr="curl wttr.in/Lyon"
 alias doc="$HOME/Documents"
 alias usbmnt="sudo mount /dev/sdb1 $HOME/usb"
-alias sss="ssh root@marcelus.net"
-alias ssg="ssh git@marcelus.net"
+alias sss="ssh root@marcellus.cc"
+alias ssg="ssh git@marcellus.cc"
 alias mpv="xset -dpms && xset s off && mpv"
 alias doc="~/Documents"
 

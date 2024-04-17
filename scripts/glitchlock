@@ -52,4 +52,4 @@ file=/tmp/lock.png
 
 convert "$file" "${LOCK[@]}" "$file"
 
-i3lock -f --indicator -k --time-color="458588ff" --date-color="458588ff" --verif-text="Vérification\n..." --wrong-text="Bonjour non." --noinput-text="Pas de putes internes" -i "$file" > /dev/null 2>&1
+LC_ALL="fr_FR.UTF-8" i3lock -f --indicator -k --time-color="458588ff" --date-color="458588ff" --verif-text="Vérification..." --wrong-text="Bonjour non." --noinput-text="Vide" -i "$file" --date-str="%A %e %B" > /dev/null 2>&1

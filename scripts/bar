@@ -1,0 +1,156 @@
+# export SWATCH=0
+echo 1 > /tmp/swatch
+
+workspace(){
+    WORKSPACE=$(xprop -root _NET_CURRENT_DESKTOP | awk '{print $3}')
+    case $WORKSPACE in
+	0)
+	    WORKSPACE="%{B#cc241d U#ffd769}  0  %{B#fb4934 U#ff8c69}  1    2    3    4    5    6    7    8    9  "
+	    ;;
+	1)
+	    WORKSPACE="  0  %{B#cc241d U#ffd769}  1  %{B#fb4934 U#ff8c69}  2    3    4    5    6    7    8    9  "
+	    ;;
+	2)
+	    WORKSPACE="  0    1  %{B#cc241d U#ffd769}  2  %{B#fb4934 U#ff8c69}  3    4    5    6    7    8    9  "
+	    ;;
+	3) 
+	    WORKSPACE="  0    1    2  %{B#cc241d U#ffd769}  3  %{B#fb4934 U#ff8c69}  4    5    6    7    8    9  "
+	    ;;
+	4)
+	    WORKSPACE="  0    1    2    3  %{B#cc241d U#ffd769}  4  %{B#fb4934 U#ff8c69}  5    6    7    8    9  "
+	    ;;
+	5)
+	    WORKSPACE="  0    1    2    3    4  %{B#cc241d U#ffd769}  5  %{B#fb4934 U#ff8c69}  6    7    8    9  "
+	    ;;
+	6)
+	    WORKSPACE="  0    1    2    3    4    5  %{B#cc241d U#ffd769}  6  %{B#fb4934 U#ff8c69}  7    8    9  "
+	    ;;
+	7)
+	    WORKSPACE="  0    1    2    3    4    5    6  %{B#cc241d U#ffd769}  7  %{B#fb4934 U#ff8c69}  8    9  "
+	    ;;
+	8)
+	    WORKSPACE="  0    1    2    3    4    5    6    7  %{B#cc241d U#ffd769}  8  %{B#fb4934 U#ff8c69}  9  "
+	    ;;
+	9)
+	    WORKSPACE="  0    1    2    3    4    5    6    7    8  %{B#cc241d U#ffd769}  9  %{B#fb4934 U#ff8c69}"
+	    ;;
+    esac
+    echo -n "%{B#ff8c69 O3 B#fb4934 U#ff8c69 +u +o}$WORKSPACE%{B#ff8c69 O3 B- -u -o}"
+}
+
+cock(){
+    SWATCH=$(cat /tmp/swatch)
+    if [ $SWATCH = "1" ]; then
+	COCK=$(cswatch)
+	ICON2=''
+    else
+	h=$(date "+%H")
+	m=$(date "+%M")
+	s=$(date "+%S")
+	COCK="$h:$m:$s"
+	ICON2='󰥔'
+	ICON='  '
+    fi
+    COCK="%{U#87ceeb B#87ceeb O3 +u +o B#076678 A:swatch:}   $ICON2  %{A}$COCK - $(LC_ALL="fr_FR.UTF-8" date "+%A %d %B") $ICON %{B#87ceeb O3 -u -o B-}"
+    echo -n $COCK
+}
+
+bat(){
+    CAP=$(cat /sys/class/power_supply/BAT0/capacity)
+    STATUS=$(cat /sys/class/power_supply/BAT0/status)
+    case CAP in
+	[01][0-5])
+	    ICON='󰁺 '
+	    COLOR="%{B#fb4934}"
+	    ;;
+	1[6-9]|[2-4][0-9])
+	    ICON='󰁼 '
+	    COLOR="%{B#fe8019}"
+	    ;;
+	5[0-9]|6[0-5])
+	    ICON='󰁾 '
+	    COLOR="%{B#b8bb26}"
+	    ;;
+	*)
+	    ICON='󰁹 '
+	    COLOR="%{B#b8bb26}"
+	    ;;
+    esac
+    if [ "$STATUS" = "Charging" ]; then
+	ICON='󰂄 '
+	COLOR="%{B#fabd2f}"
+    fi
+    echo -n "%{U#7fff00 B#7fff00 +u +o O3}$COLOR $ICON $CAP %% %{-u -o B#7fff00 O3 B-}"
+
+}
+
+
+strip() {
+	tmp="${1##{\"data\":\"}"
+	printf '%s\n' "${tmp%%\",\"request_id\":0,\"error\":\"success\"\}}"
+}
+
+music(){
+    TITLE="$(pactl list | grep YouTube | sed 's/.*media\.name = "//g' | sed 's/( - )?YouTube.Music"//g' -E)"
+    ICON=''
+    if [ -z "$TITLE" ]; then
+	[ $(pgrep music) ] 2> /dev/null && echo -n ""
+	ICON_PAUSE=''
+	ICON_PLAY=''
+	PAUSE="$(strip "$(printf '{ "command": ["get_property_string", "pause"] }\n'\
+		| socat - /tmp/mpvsocket 2> /dev/null)")"
+	TITLE="$(strip "$(printf '{ "command": ["get_property", "media-title"] }\n'\
+		| socat - /tmp/mpvsocket 2> /dev/null)")"
+    fi
+    if [ "$PAUSE" = "yes" ]; then
+	ICON=$ICON_PAUSE
+    elif [ "$PAUSE" = "no" ]; then
+	ICON=$ICON_PLAY
+    fi
+    echo -n "%{B#ffc0cb O3 U#ffc0cb +u +o B#ff8da1 A:selectopt:} $ICON $TITLE %{A B#ffc0cb O3 -u -o B-}"
+    # TITLE=""
+}
+
+volume(){
+    VOL=$(pamixer --get-volume-human | sed 's/%//g')
+    case $VOL in
+	100|[6-9][0-9])
+	    ICON='󰕾'
+	    ;;
+	[3-5][0-9])
+	    ICON='󰖀'
+	    ;;
+	[0-9]|[12][0-9])
+	    ICON='󰕿'
+	    ;;
+	muted)
+	    ICON='󰖁'
+	    ;;
+    esac
+    echo -n "%{B#ffc0cb O3 U#ffc0cb +u +o B#ff8da1} $ICON $VOL%{B#ffc0cb O3 -u -o B-}"
+}
+
+loop(){
+    i=1
+    m=1
+    while true; do
+	# [ ${#msc} -gt 13 ] && TITLE=$(echo -n $msc| cut -b $i-$(( i + 13 )) )
+	
+
+	# l=$(( ${#msc} - 2 ))
+
+	echo "%{l}$(workspace)%{c}$(music)$(volume) %{r} $(bat)  $(cock)"
+
+	# (( i += m ))
+	# if [ $i -ge $l ]; then
+	#   m=-1
+	# fi
+	# if [ $i -eq 1 ]; then
+	#   m=1
+	# fi
+
+	sleep 0.1s
+    done
+}
+
+loop | lemonbar -g 1340x30+13+5 -d -p -B "#00000000" -f "tintin:normal:size=16" -f "Cousine Nerd Font:normal:size=12" -u 3
