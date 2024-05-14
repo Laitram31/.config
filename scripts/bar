@@ -49,8 +49,8 @@ cock(){
 	s=$(date "+%S")
 	COCK="$h:$m:$s"
 	ICON2='󰥔'
-	ICON='  '
     fi
+    ICON='  '
     COCK="%{U#87ceeb B#87ceeb O3 +u +o B#076678 A:swatch:}   $ICON2  %{A}$COCK - $(LC_ALL="fr_FR.UTF-8" date "+%A %d %B") $ICON %{B#87ceeb O3 -u -o B-}"
     echo -n $COCK
 }

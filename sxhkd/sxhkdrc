@@ -20,6 +20,8 @@ super + m
     music
 super + shift + m
       musiccmd
+super + c
+    [ $(cat /tmp/swatch) = "0" ] && echo 1 > /tmp/swatch || echo 0 > /tmp/swatch
 XF86Tools
 	selectopt
 XF86Audio{Prev,Next,Play}
