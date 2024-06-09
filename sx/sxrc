@@ -1,9 +1,9 @@
 setxkbmap fr
 killall scron
-scron -f ~/.config/crontab
-$HOME/.config/scripts/randwp
-sxhkd&
+scron -f $HOME/.config/crontab
 picom&
-dwmblocks&
 redshift&
-exec dwm
+(bar | barhandler)&
+sxhkd&
+randwp
+exec Fluorite
